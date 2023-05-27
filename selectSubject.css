@@ -1,0 +1,100 @@
+*{
+      font-family: serif;
+      box-sizing: border-box;
+}
+
+.department{
+      display: none;
+      background-color: rgb(182, 187, 187,0.4);
+      transition: all 0.5s;
+}
+
+.department a {
+   display: block; 
+   text-decoration: none;  
+   color:black;
+   padding-left: 5px;
+   padding-top: 7px;
+   padding-bottom: 5px;
+   transition: 0.5s;
+}
+
+.department a:hover{
+ background-color:green;
+}
+
+.I-Am-Hidden a{
+      display: block; 
+      text-decoration: none;  
+      color:black;
+      margin-left: 13.5%;
+      padding-top: 7px;
+      padding-bottom: 5px;
+      transition: 0.5s;    
+}
+.I-Am-Hidden >a{
+      margin-left: 30.5%; 
+      cursor: pointer;   
+}
+
+.Model-btn,.Exit-btn{
+     margin-left: 12%;
+     cursor: pointer;
+}
+
+.subject ,.Exams{
+   cursor: pointer;   
+}
+
+.I-Am-Hidden a:hover{
+      background-color:green;    
+}
+
+.I-Am-Hidden{
+      display: none;
+}
+
+.You-Are-Shown{
+      display: block;
+      position: relative;    
+}
+
+.btn{
+     border-width: 0px;
+     color: white;
+     width: 18%;
+     padding-top: 10px;
+     padding-bottom: 10px;
+     display: inline-block;
+    background-color: black;
+}
+
+
+#left_side_bar{
+      width:15%;
+      height: 388px;
+      overflow: auto;
+      background-color: rgb(182, 187, 187,0.5);
+      }
+      #mainClass{
+            float: right;
+            display: none;
+            width:84%;
+            height: 388px;
+            overflow: auto;
+            
+      }
+     
+      
+      .active,.btn:hover{
+            background-color: green;
+      }
+      #header{
+            background-color: black;
+      }
+      #header button{
+            cursor: pointer;
+      }
+
+      
+

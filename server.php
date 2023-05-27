@@ -1,0 +1,206 @@
+<?php
+$question=$option_1=$option_2=$option_3=$option_4=$answer= $Exam_year=$Exit_model=$subject_id = "";
+$dbName = "eueep";
+$hostName = "localhost";
+$userName="root";
+$password="";
+
+try {
+    $conn = new PDO("mysql:host=$hostName;dbname=$dbName", $userName, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+//if ($_SERVER["REQUEST_METHOD"] == "POST"){
+  // php for upload
+ if (isset($_POST['submit_me'])) {
+  $question = $_POST['question'];
+  $option_1 = $_POST['firstOption'];
+  $option_2 = $_POST['secondOption'];
+  $option_3 = $_POST['thirdOption'];
+  $option_4 = $_POST['fourthOption'];
+  $answer   = $_POST['answer'];
+  $subject_id = $_POST['controll_subject_type'];
+  $Exit_model = $_POST['controll_exam_type'];
+  $Exam_year = 2015;
+
+    if($Exit_model == "exit"){
+      $query = "INSERT INTO exit_exam(QUESTION,OPTION_1,OPTION_2,OPTION_3,OPTION_4,ANSWER,EXAM_YEAR,SUBJECT_ID) VALUES (:QUESTION, :OPTION_1, :OPTION_2, :OPTION_3, :OPTION_4, :ANSWER, :EXAM_YEAR, :SUBJECT_ID)";
+      $stmt = $conn->prepare($query);
+      $stmt->execute(array(':QUESTION' => $question, ':OPTION_1' => $option_1, ':OPTION_2' => $option_2, ':OPTION_3' => $option_3, ':OPTION_4' => $option_4, ':ANSWER' => $answer, ':EXAM_YEAR' => $Exam_year, ':SUBJECT_ID' => $subject_id));
+        }
+    if($Exit_model == "model"){
+      $query = "INSERT INTO model_exam(QUESTION,OPTION_1,OPTION_2,OPTION_3,OPTION_4,ANSWER,EXAM_YEAR,SUBJECT_ID) VALUES (:QUESTION, :OPTION_1, :OPTION_2, :OPTION_3, :OPTION_4, :ANSWER, :EXAM_YEAR, :SUBJECT_ID)";
+      $stmt = $conn->prepare($query);
+      $stmt->execute(array(':QUESTION' => $question, ':OPTION_1' => $option_1, ':OPTION_2' => $option_2, ':OPTION_3' => $option_3, ':OPTION_4' => $option_4, ':ANSWER' => $answer, ':EXAM_YEAR' => $Exam_year, ':SUBJECT_ID' => $subject_id));
+      }
+  }
+
+//php for take exam
+  $Exit_model_for_takeExam=$subject_id_for_takeExam="";
+  if (isset($_POST['submit_hidden_form'])) {
+    $Exit_model_for_takeExam = $_POST["Exam_type_controller4takeExam"];
+    $subject_id_for_takeExam = $_POST["subject_type_controller4takeExam"];
+    if( $Exit_model_for_takeExam == "exit"){
+      $Querry="SELECT QUESTION,OPTION_1,OPTION_2,OPTION_3,OPTION_4,ANSWER FROM exit_exam WHERE  SUBJECT_ID=$subject_id_for_takeExam";
+      $stmt=$conn->prepare($Querry);
+      $stmt->execute();
+      $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      $j=1;
+      if(count($result)>0){
+        echo "<b>2015 </b>".strtoupper( "<b>$Exit_model_for_takeExam</b>"). " <b>EXAM QUESTIONS</b>";
+      }else{
+        echo "<b>QUESTION IS NOT UPLOADED YET </b>";
+      }
+      foreach($result as $row){
+          $col1=$row["QUESTION"];
+          $col2=$row["OPTION_1"];
+          $col3=$row["OPTION_2"];
+          $col4=$row["OPTION_3"];
+          $col5=$row["OPTION_4"];
+          $col6=$row["ANSWER"];
+
+          echo "<div><b>$j</b> $col1</div>";
+          echo "A,$col2 <br>";
+          echo "B,$col3 <br>";
+          echo "C,$col4 <br>";
+          echo "D,$col5 <br>";
+          //echo "$col6 <br>";
+          echo "<br>";
+          $j=$j+1;
+      }
+
+    }
+    if( $Exit_model_for_takeExam == "model"){
+      $Querry="SELECT QUESTION,OPTION_1,OPTION_2,OPTION_3,OPTION_4,ANSWER FROM model_exam WHERE  SUBJECT_ID=$subject_id_for_takeExam";
+      $stmt=$conn->prepare($Querry);
+      $stmt->execute();
+      $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      $i=1;
+      if(count($result)>0){
+        echo "<b>2015 </b>".strtoupper( "<b>$Exit_model_for_takeExam</b>"). " <b>EXAM QUESTIONS</b>";
+      }else{
+        echo "<b>QUESTION IS NOT UPLOADED YET </b>";
+      }
+      foreach($result as $row){
+          $col1=$row["QUESTION"];
+          $col2=$row["OPTION_1"];
+          $col3=$row["OPTION_2"];
+          $col4=$row["OPTION_3"];
+          $col5=$row["OPTION_4"];
+          $col6=$row["ANSWER"];
+
+          echo "<div> <b>$i</b> $col1</div>";
+          echo "A,$col2 <br>";
+          echo "B,$col3 <br>";
+          echo "C,$col4 <br>";
+          echo "D,$col5 <br>";
+         // echo "$col6 <br>";
+          echo "<br>";
+          $i=$i+1;
+      }
+    }  
+}
+
+
+// php for display
+$Exit_model_for_display=$subject_id_for_display="";
+  if (isset($_POST['submit_hidden_form_forDisplay'])) {
+    $Exit_model_for_display = $_POST["Exam_type_controller4display"];
+    $subject_id_for_display = $_POST["subject_type_controller4display"];
+    if( $Exit_model_for_display == "exit"){
+      $Querry="SELECT EXIT_ID,QUESTION,OPTION_1,OPTION_2,OPTION_3,OPTION_4,ANSWER FROM exit_exam WHERE  SUBJECT_ID=$subject_id_for_display";
+      $stmt=$conn->prepare($Querry);
+      $stmt->execute();
+      $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      if(count($result)>0){
+        echo "<b>2015 </b>".strtoupper( "<b>$Exit_model_for_display</b>"). " <b>EXAM QUESTIONS</b>";
+      }else{
+        echo "<b>QUESTION IS NOT UPLOADED YET </b>";
+      }
+      foreach($result as $row){
+          $col1=$row["EXIT_ID"];
+          $col2=$row["QUESTION"];
+          $col3=$row["OPTION_1"];
+          $col4=$row["OPTION_2"];
+          $col5=$row["OPTION_3"];
+          $col6=$row["OPTION_4"];
+          $col7=$row["ANSWER"];
+
+          echo "<div> <b>$col1</b> $col2</div>";
+          echo "A,$col3 <br>";
+          echo "B,$col4 <br>";
+          echo "C,$col5 <br>";
+          echo "D,$col6 <br>";
+          //echo "$col6 <br>";
+          echo "<br>";
+      }
+
+    }
+    if( $Exit_model_for_display == "model"){
+      $Querry="SELECT MODEL_ID, QUESTION,OPTION_1,OPTION_2,OPTION_3,OPTION_4,ANSWER FROM model_exam WHERE  SUBJECT_ID=$subject_id_for_display";
+      $stmt=$conn->prepare($Querry);
+      $stmt->execute();
+      $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      if(count($result)>0){
+        echo "<b>2015 </b>".strtoupper( "<b>$Exit_model_for_display</b>"). " <b>EXAM QUESTIONS</b>";
+      }else{
+        echo "<b>QUESTION IS NOT UPLOADED YET </b>";
+      }
+      foreach($result as $row){
+          $col1=$row["MODEL_ID"];
+          $col2=$row["QUESTION"];
+          $col3=$row["OPTION_1"];
+          $col4=$row["OPTION_2"];
+          $col5=$row["OPTION_3"];
+          $col6=$row["OPTION_4"];
+          $col7=$row["ANSWER"];
+
+          echo "<div><b>$col1</b> $col2</div>";
+          echo "A,$col3 <br>";
+          echo "B,$col4 <br>";
+          echo "C,$col5 <br>";
+          echo "D,$col6 <br>";
+         // echo "$col6 <br>";
+          echo "<br>";
+      }
+    }  
+}
+
+// php for delete
+$Exit_model_for_delete=$question_id_4delete=$subject_id_for_delete= $error="";
+if(isset($_POST["submit_form_forDelete"])){
+  $Exit_model_for_delete=$_POST["Exam_type_controller4delete"];
+  $question_id_4delete=$_POST["question_id"];
+  $subject_id_for_delete=$_POST["subject_type_controller4delete"];
+
+  if($Exit_model_for_delete == "exit"){
+    $querry="DELETE FROM exit_exam WHERE EXIT_ID=:EXIT_ID AND SUBJECT_ID=:SUBJECT_ID";
+    $stmt=$conn->prepare($querry);
+    $stmt->bindParam(':EXIT_ID',$question_id_4delete);
+    $stmt->bindParam(':SUBJECT_ID',$subject_id_for_delete);
+    $stmt->execute();
+    if($stmt->rowCount()>0){
+      echo "one row with EXIT_ID = $question_id_4delete deleted succesfully";
+    }
+    else{
+      echo "No row is found with EXIT_ID = $question_id_4delete";
+    }
+  }
+
+  if($Exit_model_for_delete == "model"){
+    $querry="DELETE FROM model_exam WHERE MODEL_ID=:MODEL_ID AND SUBJECT_ID=:SUBJECT_ID";
+    $stmt=$conn->prepare($querry);
+    $stmt->bindParam(':MODEL_ID',$question_id_4delete);
+    $stmt->bindParam(':SUBJECT_ID',$subject_id_for_delete);
+    $stmt->execute();
+    if($stmt->rowCount()>0){
+      $error="one row with MODEL_ID = $question_id_4delete deleted succesfully";
+    }
+    else{
+      $error="No row is found with MODEL_ID = $question_id_4delete";
+    }
+  }
+}
+
+}catch (PDOException $e) {
+  echo "Error while connecting to database: " . $e->getMessage();
+}
+?>

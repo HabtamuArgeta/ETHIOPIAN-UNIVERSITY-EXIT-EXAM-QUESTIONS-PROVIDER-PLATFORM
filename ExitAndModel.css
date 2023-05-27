@@ -1,0 +1,27 @@
+fieldset{
+      border:7px solid green;
+}
+
+.Question{
+      width: 86%;
+      height: 150px;
+}
+
+.options,.ans{
+      width: 70%;
+      height: 90px;
+      border-radius: 1.5%;
+      margin-left:1%; 
+      margin-top: 1%;  
+}
+
+#upload{
+   margin-top:2%;
+   margin-left: 60%;
+}
+#clear{
+      margin-top:2%;
+}
+.error{
+      color:red;
+}
