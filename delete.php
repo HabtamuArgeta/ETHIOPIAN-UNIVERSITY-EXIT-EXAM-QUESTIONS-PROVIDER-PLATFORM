@@ -19,11 +19,11 @@
       </nav>
        <main id="mainClass" style="float: right;width:84%;height:388px;display:none;">
          <form style="margin-left:30%;margin-top:8%;" method="POST" action="server.php" target="displayed_exam_container">
-            <p><input type="number" name="question_id" placeholder="Enter question id"></p>
-            <input style="display:none" type="text" id="Exam_type_controller4delete" name="Exam_type_controller4delete"><br>
+            <div id="deleted_message"></div>
+            <input type="number" name="question_id" placeholder="Enter question id"><br><br>
             <input style="margin-left:16%" type="submit" name="submit_form_forDelete" value="delete">
-            <input style="display:none"  type="text" id="subject_type_controller4delete" name="subject_type_controller4delete"><br>
-            <?php echo $error; ?>
+            <input style="display:none" type="text" id="Exam_type_controller4delete" name="Exam_type_controller4delete">
+            <input style="display:none"  type="text" id="subject_type_controller4delete" name="subject_type_controller4delete">
          </form> 
        
        </main>
@@ -619,6 +619,14 @@
                 document.getElementById("Exam_type_controller4delete").value=x;
                 document.getElementById("subject_type_controller4delete").value=y;
                 document.getElementById("mainClass").style.display="block";
+            }
+            function handelresponse(deleted_response){
+               document.getElementById('deleted_message').innerHTML=deleted_response;
+            }
+            function handelErrorresponse(deleted_response){
+               document.getElementById('deleted_message').innerHTML=deleted_response;
+               document.getElementById('deleted_message').style.color="red";
+ 
             }
         </script>
         

@@ -4,7 +4,6 @@ $dbName = "eueep";
 $hostName = "localhost";
 $userName="root";
 $password="";
-
 try {
     $conn = new PDO("mysql:host=$hostName;dbname=$dbName", $userName, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
@@ -165,12 +164,11 @@ $Exit_model_for_display=$subject_id_for_display="";
 }
 
 // php for delete
-$Exit_model_for_delete=$question_id_4delete=$subject_id_for_delete= $error="";
+$Exit_model_for_delete=$question_id_4delete=$subject_id_for_delete= "";
 if(isset($_POST["submit_form_forDelete"])){
   $Exit_model_for_delete=$_POST["Exam_type_controller4delete"];
   $question_id_4delete=$_POST["question_id"];
   $subject_id_for_delete=$_POST["subject_type_controller4delete"];
-
   if($Exit_model_for_delete == "exit"){
     $querry="DELETE FROM exit_exam WHERE EXIT_ID=:EXIT_ID AND SUBJECT_ID=:SUBJECT_ID";
     $stmt=$conn->prepare($querry);
@@ -178,10 +176,10 @@ if(isset($_POST["submit_form_forDelete"])){
     $stmt->bindParam(':SUBJECT_ID',$subject_id_for_delete);
     $stmt->execute();
     if($stmt->rowCount()>0){
-      echo "one row with EXIT_ID = $question_id_4delete deleted succesfully";
+      echo '<script>window.parent.handelresponse("one row is affected");</script>';
     }
     else{
-      echo "No row is found with EXIT_ID = $question_id_4delete";
+      echo '<script>window.parent.handelErrorresponse("No row with question_id='.$question_id_4delete.'");</script>';
     }
   }
 
@@ -192,13 +190,97 @@ if(isset($_POST["submit_form_forDelete"])){
     $stmt->bindParam(':SUBJECT_ID',$subject_id_for_delete);
     $stmt->execute();
     if($stmt->rowCount()>0){
-      $error="one row with MODEL_ID = $question_id_4delete deleted succesfully";
+      echo '<script>window.parent.handelresponse("one row is affected");</script>';
     }
     else{
-      $error="No row is found with MODEL_ID = $question_id_4delete";
+      echo '<script>window.parent.handelErrorresponse("No row with question_id='.$question_id_4delete.'");</script>';
     }
   }
 }
+ // php for search form in Update
+ $Exit_model_inInternal=$question_id_inInternal=$subject_id_inInternal="";
+ if (isset($_POST['searched_submit'])) {
+  $Exit_model_inInternal = $_POST["Exam_type_inInternal"];
+  $question_id_inInternal = $_POST["searched_question_id"];
+  $subject_id_inInternal=$_POST['subject_type_inInternal'];
+  if( $Exit_model_inInternal == "exit"){
+    $Querry="SELECT QUESTION,OPTION_1,OPTION_2,OPTION_3,OPTION_4,ANSWER FROM exit_exam WHERE  EXIT_ID=$question_id_inInternal AND SUBJECT_ID=$subject_id_inInternal";
+    $stmt=$conn->prepare($Querry);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if(count($result)==0){
+      echo '<script>window.parent.handleErrorResponse("No row with question_id='.$question_id_inInternal.'");</script>';
+    }else{
+    foreach($result as $row){
+        $col1=$row["QUESTION"];
+        $col2=$row["OPTION_1"];
+        $col3=$row["OPTION_2"];
+        $col4=$row["OPTION_3"];
+        $col5=$row["OPTION_4"];
+        $col6=$row["ANSWER"];
+        
+      }
+    echo '<script>window.parent.handleResponse("'.$col1.'","'.$col2.'","'.$col3.'","'.$col4.'","'.$col5.'","'.$col6.'","'.$question_id_inInternal.'");</script>';
+    }
+  }
+  if( $Exit_model_inInternal == "model"){
+    $Querry="SELECT QUESTION,OPTION_1,OPTION_2,OPTION_3,OPTION_4,ANSWER FROM model_exam WHERE  MODEL_ID=$question_id_inInternal AND SUBJECT_ID=$subject_id_inInternal";
+    $stmt=$conn->prepare($Querry);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if(count($result)>0){
+      echo '<script>window.parent.handleErrorResponse("No row with question_id='.$question_id_inInternal.'");</script>';
+    }else{
+      foreach($result as $row){
+        $col1=$row["QUESTION"];
+        $col2=$row["OPTION_1"];
+        $col3=$row["OPTION_2"];
+        $col4=$row["OPTION_3"];
+        $col5=$row["OPTION_4"];
+        $col6=$row["ANSWER"];
+    }
+    echo '<script>window.parent.handleResponse("'.$col1.'","'.$col2.'","'.$col3.'","'.$col4.'","'.$col5.'","'.$col6.'","'.$question_id_inInternal.'");</script>';
+  }
+  } 
+}
+// php to make updates
+$Exit_model_for_update=$question_id_4update=$subject_id_for_update= "";
+$col1=$col2=$col3=$col4=$col5=$col6="";
+if(isset($_POST['submit_updates'])){
+  $Exit_model_for_update=$_POST['controll_exam_type4update'];
+  $subject_id_for_update=$_POST['controll_subject_type4update'];
+  $question_id_4update=$_POST["Question_id_4update"];
+  $col1=$_POST['question'];
+  $col2=$_POST['firstOption'];
+  $col3=$_POST['secondOption'];
+  $col4=$_POST['thirdOption'];
+  $col5=$_POST['fourthOption'];
+  $col6=$_POST['answer'];
+
+  if($Exit_model_for_update=="exit"){
+    $querry="UPDATE exit_exam SET QUESTION=:QUESTION,OPTION_1=:OPTION_1,OPTION_2=:OPTION_2,OPTION_3=:OPTION_3,OPTION_4=:OPTION_4,ANSWER=:ANSWER WHERE EXIT_ID=:EXIT_ID AND SUBJECT_ID=:SUBJECT_ID";
+    $stmt=$conn->prepare($querry);
+    $stmt->execute(array(':QUESTION'=>$col1,':OPTION_1'=>$col2,':OPTION_2'=>$col3,':OPTION_3'=>$col4,':OPTION_4'=>$col5,':ANSWER'=>$col6,':EXIT_ID'=>$question_id_4update,':SUBJECT_ID'=>$subject_id_for_update));
+    if($stmt->rowCount()>0){
+    echo '<script>window.parent.handleSuccessUpdateResponse("Data updated successfully");</script>';
+    }else{
+      echo '<script>window.parent.handleSuccessUpdateResponse("Errror while updating");</script>';
+    }
+  }
+  if($Exit_model_for_update=="model"){
+    $querry="UPDATE model_exam SET QUESTION=:QUESTION,OPTION_1=:OPTION_1,OPTION_2=:OPTION_2,OPTION_3=:OPTION_3,OPTION_4=:OPTION_4,ANSWER=:ANSWER WHERE MODEL_ID=:MODEL_ID AND SUBJECT_ID=:SUBJECT_ID";
+    $stmt=$conn->prepare($querry);
+    $stmt->execute(array(':QUESTION'=>$col1,':OPTION_1'=>$col2,':OPTION_2'=>$col3,':OPTION_3'=>$col4,':OPTION_4'=>$col5,':ANSWER'=>$col6,':MODEL_ID'=>$question_id_4update,':SUBJECT_ID'=>$subject_id_for_update));
+    if($stmt->rowCount()>0){
+      echo '<script>window.parent.handleSuccessUpdateResponse("Data updated successfully");</script>';
+    }else{
+      echo '<script>window.parent.handleSuccessUpdateResponse("Errror while updating");</script>';
+    }
+  }
+}
+
+
+
 
 }catch (PDOException $e) {
   echo "Error while connecting to database: " . $e->getMessage();

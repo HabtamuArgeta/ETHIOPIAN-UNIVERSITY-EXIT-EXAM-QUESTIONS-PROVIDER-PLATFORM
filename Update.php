@@ -5,7 +5,7 @@
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Upload</title>
+      <title>Update</title>
       <link rel="stylesheet" href="selectSubject.css">
       <link rel="stylesheet" href="ExitAndModel.css">
    </head>
@@ -20,27 +20,44 @@
          <button title="Feilds under engineering" onclick="ShowDepartment(5)" class="btn">Engineering</button>
       </nav>
       <main id="mainClass">  
-         <fieldset>
+         <fieldset >
             <legend id="Legend"></legend>
-            <form id="myForm" method="POST" action="server.php" target="hide_the_response_from_php">
-                <p class="error">*All fields are required</p>
-               <textarea class="Question clear" name="question"  placeholder="Enter Qustion here !!!" autofocus required></textarea>
-               <textarea class="options clear"  name="firstOption"  placeholder="First Option" required></textarea>
-               <textarea class="options clear"  name="secondOption"  placeholder="Second Option" required></textarea>
-               <textarea class="options clear"  name="thirdOption"  placeholder="Third Option" required></textarea>
-               <textarea class="options clear"  name="fourthOption"  placeholder="Fourth Option" required></textarea>
-               <textarea class="ans clear"  name="answer"  placeholder="Answer" required></textarea><br>
-               <input style="display: none;" type="text" name="controll_exam_type" id="controll_exam_type">
-               <input  style="display: none;" type="text" name="controll_subject_type" id="controll_subject_type">
-               <input id="clear" type="reset" value="Clear">
-               <input id="upload" type="submit" value="Upload" name="submit_me">
+            <form method="POST" action="server.php" target="display_to_me">
+                <div style="float:right;">
+                   <input  type="number" name="searched_question_id" placeholder="Enter Question id">
+                   <input  type="submit" value="search" name="searched_submit">
+                   <div id="error" style="color:red"></div>
+                </div>
+                <input style="display:none;" type="text" id="Exam_type_inInternal" name="Exam_type_inInternal">
+                <input style="display:none;" type="text" id="subject_type_inInternal" name="subject_type_inInternal">
+            </form>
+
+            <form style="display:none;" id="myForm" method="POST" action="server.php" target="hide_the_response_from_php" >
+             <br><br>
+               QUESTION:<br>
+               <textarea id="responseContainer1" class="Question clear" name="question" required></textarea>
+               <br> FIRST OPTION:<br>
+               <textarea  id="responseContainer2"class="options clear"  name="firstOption"  required></textarea>
+               <br>SECOND OPTION:<br>
+               <textarea  id="responseContainer3"class="options clear"  name="secondOption" required></textarea>
+               <br>THIRD OPTION:<br>
+               <textarea  id="responseContainer4"class="options clear"  name="thirdOption" required></textarea>
+               <br>FOURTH OPTION:<br>
+               <textarea  id="responseContainer5"class="options clear"  name="fourthOption"required></textarea>
+               <br>ANSWER:<br>
+               <textarea  id="responseContainer6"class="ans clear"  name="answer"          required></textarea><br>
+               <input style="display:none;" type="text" id="responseContainer7" name="Question_id_4update">
+               <input style="display: none;" type="text" name="controll_exam_type4update" id="controll_exam_type4update">
+               <input  style="display: none;" type="text" name="controll_subject_type4update" id="controll_subject_type4update">
+                <div id="success_updates"></div>
+               <input style="margin-left:50%;" type="submit" value="Update" name="submit_updates">
             </form>
          </fieldset>
       </main>
       <!-- This is used to hide the response from php when the form is submitted ,this 
       incase make the page not to refrash after submitting the form !!!-->
       <iframe id="myFrame" name="hide_the_response_from_php" style="display: none;"></iframe>
-
+       <iframe name="display_to_me" style="display: none;"></iframe>
          <aside id="left_side_bar">
            <div class="natural-science">
                <div class="department">
@@ -627,7 +644,7 @@
         </aside>
 
         <script src="selectSubjects.js"></script>
-        <script src="formForUpload.js"></script>
+        <script src="formForUpdate.js"></script>
         
    </body>
 </html>
