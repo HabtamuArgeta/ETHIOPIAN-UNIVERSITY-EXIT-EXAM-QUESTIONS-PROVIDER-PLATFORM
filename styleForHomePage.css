@@ -1,0 +1,49 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body { 
+    font-family: montserrat;
+
+}
+#header-nav{
+    background: #0082e6;
+    height: 80px;
+    width: 100%;
+}
+#header-nav span{
+    float: left;
+    color: rgb(16, 193, 60);
+    font-size: 35px;
+    font-weight: bold;
+}
+#logo{
+    float: left;
+    margin-top: 15px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+#header-nav span,#header-nav a{
+    display: inline-block;
+    float: left;
+    margin-top: 15px;
+    margin-left: 20px;
+    font-weight: bold;
+}
+#header-nav a{
+    text-decoration: none;
+    font-size: 30px;
+    color: rgb(212, 210, 210);
+}
+#myfram{
+    border-width: 0;
+    width: 100%;
+    height: 500px;
+    overflow: auto;
+}
+
+    
+    
+    

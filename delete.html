@@ -1,15 +1,14 @@
-<?php include('server.php')?>
+
 <!DOCTYPE html>
 <html lang="en">
    <head>
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Take Exam</title>
+      <title>Delete</title>
       <link rel="stylesheet" href="selectSubject.css">
    </head>
    <body>
-       <img src="background.jpg" width="100%" height="150" alt="background image">
        <nav id="header">
          <button title="Fields under nutural science" onclick="ShowDepartment(1)" class="btn active" >Nutural science</button>
          <button title="Fields under social science" onclick="ShowDepartment(2)" class="btn">Social science</button>
@@ -17,16 +16,17 @@
          <button title="Fields under informatics" onclick="ShowDepartment(4)" class="btn">Informatics</button>
          <button title="Feilds under engineering" onclick="ShowDepartment(5)" class="btn">Engineering</button>
       </nav>
-       <main style="display:none">
-         <form id="hidden_form" method="POST" action="server.php" target="displayed_exam_container">
-            <input text="text" id="Exam_type_controller4takeExam" name="Exam_type_controller4takeExam" ><br>
-            <input text="text" id="subject_type_controller4takeExam" name="subject_type_controller4takeExam" ><br>
-            <input text="submit" name="submit_hidden_form" value="submit">
+       <main id="mainClass" style="float: right;width:84%;height:388px;display:none;">
+         <form style="margin-left:30%;margin-top:8%;" method="POST" action="server.php" target="displayed_exam_container">
+            <div id="deleted_message"></div>
+            <input type="number" name="question_id" placeholder="Enter question id"><br><br>
+            <input style="margin-left:16%" type="submit" name="submit_form_forDelete" value="delete">
+            <input style="display:none" type="text" id="Exam_type_controller4delete" name="Exam_type_controller4delete">
+            <input style="display:none"  type="text" id="subject_type_controller4delete" name="subject_type_controller4delete">
          </form> 
-       </main>
        
-       <iframe  name="displayed_exam_container" style="float:right;width:84%;height:388px;border-width: 0;overflow:auto"></iframe>
-
+       </main>
+      <iframe  name="displayed_exam_container" style="display:none"></iframe>
          <aside id="left_side_bar">
            <div class="natural-science">
                <div class="department">
@@ -615,9 +615,17 @@
         <script src="selectSubjects.js"></script>
         <script>
             function showExam(x,y){
-                document.getElementById("Exam_type_controller4takeExam").value=x;
-                document.getElementById("subject_type_controller4takeExam").value=y;
-                document.getElementById("hidden_form").submit();
+                document.getElementById("Exam_type_controller4delete").value=x;
+                document.getElementById("subject_type_controller4delete").value=y;
+                document.getElementById("mainClass").style.display="block";
+            }
+            function handelresponse(deleted_response){
+               document.getElementById('deleted_message').innerHTML=deleted_response;
+            }
+            function handelErrorresponse(deleted_response){
+               document.getElementById('deleted_message').innerHTML=deleted_response;
+               document.getElementById('deleted_message').style.color="red";
+ 
             }
         </script>
         
