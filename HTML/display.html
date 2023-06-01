@@ -6,7 +6,7 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Display</title>
-      <link rel="stylesheet" href="selectSubject.css">
+      <link rel="stylesheet" href="../CSS/selectSubject.css">
    </head>
    <body>
        <nav id="header">
@@ -17,7 +17,7 @@
          <button title="Feilds under engineering" onclick="ShowDepartment(5)" class="btn">Engineering</button>
       </nav>
        <main style="display:none">
-         <form id="hidden_form" method="POST" action="server.php" target="displayed_exam_container">
+         <form id="hidden_form" method="POST" action="../PHP/server.php" target="displayed_exam_container">
             <input text="text" id="Exam_type_controller4display" name="Exam_type_controller4display" ><br>
             <input text="text" id="subject_type_controller4display" name="subject_type_controller4display" ><br>
             <input text="submit" name="submit_hidden_form_forDisplay" value="submit">
@@ -609,7 +609,7 @@
           </div>
         </aside>
 
-        <script src="selectSubjects.js"></script>
+        <script src="../JS/selectSubjects.js"></script>
         <script>
             function showExam(x,y){
                 document.getElementById("Exam_type_controller4display").value=x;

@@ -6,8 +6,8 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Update</title>
-      <link rel="stylesheet" href="selectSubject.css">
-      <link rel="stylesheet" href="ExitAndModel.css">
+      <link rel="stylesheet" href="../CSS/selectSubject.css">
+      <link rel="stylesheet" href="../CSS/ExitAndModel.css">
    </head>
    <body>
        <nav id="header">
@@ -20,7 +20,7 @@
       <main id="mainClass">  
          <fieldset >
             <legend id="Legend"></legend>
-            <form method="POST" action="server.php" target="display_to_me">
+            <form method="POST" action="../PHP/server.php" target="display_to_me">
                 <div style="float:right;">
                    <input  type="number" name="searched_question_id" placeholder="Enter Question id">
                    <input  type="submit" value="search" name="searched_submit">
@@ -30,7 +30,7 @@
                 <input style="display:none;" type="text" id="subject_type_inInternal" name="subject_type_inInternal">
             </form>
 
-            <form style="display:none;" id="myForm" method="POST" action="server.php" target="hide_the_response_from_php" >
+            <form style="display:none;" id="myForm" method="POST" action="../PHP/server.php" target="hide_the_response_from_php" >
              <br><br>
                QUESTION:<br>
                <textarea id="responseContainer1" class="Question clear" name="question" required></textarea>
@@ -641,8 +641,8 @@
           </div>
         </aside>
 
-        <script src="selectSubjects.js"></script>
-        <script src="formForUpdate.js"></script>
+        <script src="../JS/selectSubjects.js"></script>
+        <script src="../JS/formForUpdate.js"></script>
         
    </body>
 </html>
