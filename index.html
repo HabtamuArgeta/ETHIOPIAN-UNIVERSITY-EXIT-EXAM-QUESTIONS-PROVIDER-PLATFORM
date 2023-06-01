@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title id="mytitle">Home</title>
-        <meta name="viewport" content="width=device-width,initial-scale=1.0">
-        <link rel="stylesheet" href="styleForHomePage.css">
-        <script>
-          function chengeTitl(newTitle){
-            document.title = newTitle;
-          }
-        </script>
-    </head>
-    <body>
-      <header>
-        <nav id="header-nav">
-           <img id="logo" src="logo.jpg"> <span>EUEEP</span>
-           <a  href="welcome.html" onclick="chengeTitl('Home')" target="myfram">Home</a>
-           <a href="Upload.html" onclick="chengeTitl('Upload')" target="myfram">UPLOAD</a>
-           <a href="Update.html" onclick="chengeTitl('Update')"target="myfram">UPDATE</a>
-           <a href="display.html" onclick="chengeTitl('Display')"target="myfram">DISPLAY</a>
-           <a href="delete.html" onclick="chengeTitl('Delete')"target="myfram">DELETE</a>  
-        </nav>
-      </header>
-      <iframe id="myfram" name="myfram"></iframe>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link  rel="stylesheet" href="CssForlogin.css">
+</head>
+<body>
+  <center>
+   <fieldset id="feildset">
+     <legend>login </legend>
+    <form id="loginForm" method="post" action="serverforLogin.php" target="hide_me_frame">
+        <p>
+           User Name :<br>
+          <input type="text" id="username" name="Username">
+        <p>
+        <p>
+           Password :<br>
+           <input type="password" id="password" name="Password">
+        </p>
+        <div id="error"></div>
+       <p><input type="submit" value="login" id="loginSubmit" name="loginSubmit"></p>
+       <div>Dont't have an account?<a href="signUp.html">sign up</a></div>
+    </form>
+    <iframe id="hide_me_frame" name="hide_me_frame" ></iframe>
+   </fieldset>
+  </center>
+    <script src="loginAndSignUp.js"></script>
+</body>
 </html>
