@@ -1,11 +1,11 @@
 <?php
  $dbName = "login";
- $hostName = "10.4.111.5";
- $userName="habtamu";
- $password="nokosha";
+ $hostName = "localhost";
+ $userName="root";
+ $password="";
   try{
-    $conn = new PDO("mysql:host=$hostName;dbname=$dbName", $userName, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+    $conn = new  PDO("mysql:host=$hostName;dbname=$dbName", $userName, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // This is used to create table called user 
     /*$querry="CREATE TABLE user(user_no int  AUTO_INCREMENT PRIMARY KEY,
                               userName varchar(50)  not null,

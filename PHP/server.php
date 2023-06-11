@@ -1,9 +1,9 @@
 <?php
 $question=$option_1=$option_2=$option_3=$option_4=$answer= $Exam_year=$Exit_model=$subject_id = "";
 $dbName = "eueep";
-$hostName = "10.4.111.5";
-$userName="habtamu";
-$password="nokosha";
+$hostName = "localhost";
+$userName="root";
+$password="";
 try {
     $conn = new PDO("mysql:host=$hostName;dbname=$dbName", $userName, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
