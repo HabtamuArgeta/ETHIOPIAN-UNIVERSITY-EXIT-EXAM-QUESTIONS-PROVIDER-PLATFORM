@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Home</title>
+        <link rel="stylesheet" href="../CSS/Home.css">
+    </head>
+    <body>
+        <header>
+            <nav id="header-nav">
+               <img id="logo" src="../IMAGES/logo.jpg"> <span>EUEEP</span>
+               <a  href="welcome.html" onclick="chengeTitl('Home')" target="myfram">Home</a>
+               <a href="takeExam.html" onclick="chengeTitl('Exam')" target="myfram">Exam</a>
+               <a href="welcome.html" onclick="chengeTitl('About us')"target="myfram">About us</a>
+                 
+            </nav>
+          </header>
+          <iframe id="myfram" name="myfram"></iframe>
+
+          <script>
+            function chengeTitl(newTitle){
+            document.title = newTitle;
+          }
+        </script>
+    </body>
+</html>

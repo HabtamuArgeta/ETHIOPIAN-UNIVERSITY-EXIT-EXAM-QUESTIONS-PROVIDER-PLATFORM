@@ -3,7 +3,7 @@
       box-sizing: border-box;
 }
 
-.department{
+ .department{
       display: none;
       background-color: rgb(182, 187, 187,0.4);
       transition: all 0.5s;
@@ -19,9 +19,9 @@
    transition: 0.5s;
 }
 
-.department a:hover{
+  .department a:hover{
  background-color:green;
-}
+}  
 
 .I-Am-Hidden a{
       display: block; 
@@ -72,7 +72,7 @@
 
 #left_side_bar{
       width:15%;
-      height: 450px;
+      height: 456px;
       overflow: auto;
       background-color: rgb(182, 187, 187,0.5);
       }
@@ -80,12 +80,10 @@
             float: right;
             display: none;
             width:84%;
-            height: 450px;
+            height: 456px;
             overflow: auto;
             
-      }
-     
-      
+      }   
       .active,.btn:hover{
             background-color: green;
       }
@@ -95,6 +93,9 @@
       #header button{
             cursor: pointer;
       }
+      #ExamContainer{
+            float:right;width:84%;height:450px;border-width: 0;overflow:auto;
+      }
 
       
-
+ 
