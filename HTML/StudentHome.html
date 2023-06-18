@@ -9,19 +9,22 @@
     <body>
         <header>
             <nav id="header-nav">
-               <img id="logo" src="../IMAGES/logo.jpg"> <span>EUEEP</span>
-               <a  href="welcome.html" onclick="chengeTitl('Home')" target="myfram">Home</a>
-               <a href="takeExam.html" onclick="chengeTitl('Exam')" target="myfram">Exam</a>
-               <a href="welcome.html" onclick="chengeTitl('About us')"target="myfram">About us</a>
-                 
+               <img  id="logo" src="../IMAGES/logo.jpg"> <span  id="logoName">EUEEP</span>
+               <a  class="HeaderShow" href="welcome.html" onclick="chengeTitl('Home')" target="myfram">Home</a>
+               <a class="HeaderShow" href="takeExam.html" onclick="chengeTitl('Exam')" target="myfram">Exam</a>
+               <a class="HeaderShow" href="welcome.html" onclick="chengeTitl('About us')"target="myfram">About us</a>
+               <div id="bar" onclick="showBars()"> &#x2261;</div>
             </nav>
           </header>
-          <iframe id="myfram" name="myfram"></iframe>
+          <aside id="rightAside">
+               <a id="close" onclick="closeMe()">&#10007;</a>
+               <a class="Asideshow" href="welcome.html" onclick="chengeTitl('Home')" target="myfram">Home</a>
+               <a class="Asideshow" href="takeExam.html" onclick="chengeTitl('Exam')" target="myfram">Exam</a>
+               <a class="Asideshow" href="welcome.html" onclick="chengeTitl('About us')"target="myfram">About us</a>
+        
+          </aside>
+          <iframe id="myfram" name="myfram"></iframe> 
 
-          <script>
-            function chengeTitl(newTitle){
-            document.title = newTitle;
-          }
-        </script>
+          <script src="../JS/MediaManeger.js"></script>
     </body>
 </html>

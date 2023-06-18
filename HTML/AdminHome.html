@@ -8,20 +8,27 @@
     </head>
     <body>
       <header>
-        <nav id="header-nav"> 
-           <img id="logo" src="../IMAGES/logo.jpg"> <span>EUEEP</span>
-           <a href="Upload.html" onclick="chengeTitl('Upload')" target="myfram">Upload</a>
-           <a href="Update.html" onclick="chengeTitl('Update')"target="myfram">Update</a>
-           <a href="display.html" onclick="chengeTitl('Display')"target="myfram">Display</a>
-           <a href="delete.html" onclick="chengeTitl('Delete')"target="myfram">Delete</a>  
-        </nav>
-      </header>
-      <iframe id="myfram" name="myfram"></iframe>
+       <nav id="header-nav">
+         <img  id="logo" src="../IMAGES/logo.jpg"> <span  id="logoName">EUEEP</span>
+         <a  class="HeaderShow" href="welcome.html" onclick="chengeTitl('Home')" target="myfram">Home</a>
+         <a class="HeaderShow" href="Upload.html" onclick="chengeTitl('Exam')" target="myfram"> Upload</a>
+         <a class="HeaderShow" href="Update.html" onclick="chengeTitl('About us')"target="myfram">Update</a>
+         <a class="HeaderShow" href="display.html" onclick="chengeTitl('About us')"target="myfram">Display</a>
+         <a class="HeaderShow" href="delete.html" onclick="chengeTitl('About us')"target="myfram">Delete</a>
+         <div id="bar" onclick="showBars()"> &#x2261;</div>
+      </nav>
+    </header>
+    <aside id="rightAside">
+         <a id="close" onclick="closeMe()">&#10007;</a>
+         <a class="Asideshow" href="welcome.html" onclick="chengeTitl('Home')" target="myfram">Home</a>
+         <a class="Asideshow" href="Upload.html" onclick="chengeTitl('Exam')" target="myfram">Upload</a>
+         <a class="Asideshow" href="Update.html" onclick="chengeTitl('About us')"target="myfram">Update</a>
+         <a class="Asideshow" href="display.html" onclick="chengeTitl('Exam')" target="myfram">Display</a>
+         <a class="Asideshow" href="delete.html" onclick="chengeTitl('About us')"target="myfram">Delete</a>
+  
+    </aside>
+    <iframe id="myfram" name="myfram"></iframe> 
 
-      <script>
-        function chengeTitl(newTitle){
-        document.title = newTitle;
-      }
-    </script>
-    </body>
+     <script src="../JS/MediaManeger.js"></script>
+  </body>
 </html>

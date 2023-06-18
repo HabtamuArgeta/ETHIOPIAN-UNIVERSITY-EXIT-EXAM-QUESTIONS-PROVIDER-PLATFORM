@@ -16,18 +16,19 @@
     height: 50px;
     border-radius: 50%;
 }
-#header-nav span,#header-nav a{
+#logoName,.HeaderShow{
     display: inline-block;
     margin-top: 16px;
     margin-left: 27px;
     font-weight: bold;
 }
-#header-nav span{
+
+#logoName{
     float: left;
     color: rgb(16, 193, 60);
     font-size: 35px;
     font-weight: bold;
-    margin-left: 7px;
+    margin-left: 5px;
     margin-right: 22px;
 }
 #header-nav a{
@@ -35,10 +36,70 @@
     font-size: 30px;
     color: rgb(212, 210, 210);
 }
+#bar{
+    color: white;
+    font-weight: bold;
+    font-size: 50px; 
+    float: right;
+    margin-right: 10px;
+    margin-top: 8px;
+    display: none;
+    cursor: pointer;
+}
+#rightAside{
+    position: absolute;
+    right: 0;
+    padding-left: 30px;
+    height: 488px;
+    display: none;
+    background-color: black;
+    float: right;
+   
+}
+.Asideshow,#close{
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+}
+#close{
+    cursor: pointer;
+    color: red;
+}
+@media (max-width:720px){
+    a.HeaderShow{
+      display: none;
+      }
+
+      #bar{
+          display: inline;
+      }
+    #logoName{
+        font-size: 33px;
+        margin-left: 3px;
+    }
+  } 
+
+  @media (min-width:720px) and (max-width:920px){
+    #logoName{
+        font-size: 34px;
+        margin-left: 4px;
+    }
+    #header-nav a{
+        font-size: 28px;
+    }
+    .HeaderShow{
+        margin-left: 20px;
+        font-weight: bold;
+    }
+
+  } 
+
 #myfram{
     border-width: 0;
     width: 100%;
-    height: 500px;
+    height: 488px;
     overflow: auto;
 }
 
