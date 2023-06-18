@@ -165,10 +165,11 @@ $Exit_model_for_display=$subject_id_for_display="";
 
 // php for delete
 $Exit_model_for_delete=$question_id_4delete=$subject_id_for_delete= "";
-if(isset($_POST["submit_form_forDelete"])){
-  $Exit_model_for_delete=$_POST["Exam_type_controller4delete"];
-  $question_id_4delete=$_POST["question_id"];
-  $subject_id_for_delete=$_POST["subject_type_controller4delete"];
+if(isset($_POST["DeleteData"])){
+  $Exit_model_for_delete=$_POST['controll_exam_type4Delete'];
+  $question_id_4delete=$_POST['Question_id_4Delete'];
+  $subject_id_for_delete=$_POST["controll_subject_type4Delete"];
+
   if($Exit_model_for_delete == "exit"){
     $querry="DELETE FROM exit_exam WHERE EXIT_ID=:EXIT_ID AND SUBJECT_ID=:SUBJECT_ID";
     $stmt=$conn->prepare($querry);
@@ -176,10 +177,7 @@ if(isset($_POST["submit_form_forDelete"])){
     $stmt->bindParam(':SUBJECT_ID',$subject_id_for_delete);
     $stmt->execute();
     if($stmt->rowCount()>0){
-      echo '<script>window.parent.handelresponse("one row is affected");</script>';
-    }
-    else{
-      echo '<script>window.parent.handelErrorresponse("No row with question_id='.$question_id_4delete.'");</script>';
+      echo '<script>window.parent.handelresponseInDelete("one row is affected");</script>';
     }
   }
 
@@ -190,10 +188,7 @@ if(isset($_POST["submit_form_forDelete"])){
     $stmt->bindParam(':SUBJECT_ID',$subject_id_for_delete);
     $stmt->execute();
     if($stmt->rowCount()>0){
-      echo '<script>window.parent.handelresponse("one row is affected");</script>';
-    }
-    else{
-      echo '<script>window.parent.handelErrorresponse("No row with question_id='.$question_id_4delete.'");</script>';
+      echo '<script>window.parent.handelresponseInDelete("one row is affected");</script>';
     }
   }
 }
