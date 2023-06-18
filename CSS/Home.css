@@ -71,7 +71,6 @@
     a.HeaderShow{
       display: none;
       }
-
       #bar{
           display: inline;
       }
@@ -80,7 +79,6 @@
         margin-left: 3px;
     }
   } 
-
   @media (min-width:720px) and (max-width:920px){
     #logoName{
         font-size: 34px;
@@ -93,9 +91,7 @@
         margin-left: 20px;
         font-weight: bold;
     }
-
   } 
-
 #myfram{
     border-width: 0;
     width: 100%;

@@ -16,8 +16,8 @@
          <button title="Fields under informatics" onclick="ShowDepartment(4)" class="btn">Informatics</button>
          <button title="Feilds under engineering" onclick="ShowDepartment(5)" class="btn">Engineering</button>
       </nav>
-       <main id="mainClass" style="float: right;width:84%;height:388px;display:none;">
-         <form style="margin-left:30%;margin-top:8%;" method="POST" action="../PHP/server.php" target="displayed_exam_container">
+       <main id="mainClass">
+         <form  method="POST" action="../PHP/server.php" target="displayed_exam_container">
             <div id="deleted_message"></div>
             <input type="number" name="question_id" placeholder="Enter question id"><br><br>
             <input style="margin-left:16%" type="submit" name="submit_form_forDelete" value="delete">
