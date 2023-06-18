@@ -21,13 +21,13 @@
          <fieldset>
             <legend id="Legend"></legend>
             <form id="myForm" method="POST" action="../PHP/server.php" target="hide_the_response_from_php">
-                <p class="error">*All fields are required</p>
+                <p class="error">*All fields except answer are required</p>
                <textarea class="Question clear" name="question"  placeholder="Enter Qustion here !!!" autofocus required></textarea>
                <textarea class="options clear"  name="firstOption"  placeholder="First Option" required></textarea>
                <textarea class="options clear"  name="secondOption"  placeholder="Second Option" required></textarea>
                <textarea class="options clear"  name="thirdOption"  placeholder="Third Option" required></textarea>
                <textarea class="options clear"  name="fourthOption"  placeholder="Fourth Option" required></textarea>
-               <textarea class="ans clear"  name="answer"  placeholder="Answer" required></textarea><br>
+               <textarea class="ans clear"  name="answer"  placeholder="Answer" ></textarea><br>
                <input style="display: none;" type="text" name="controll_exam_type" id="controll_exam_type">
                <input  style="display: none;" type="text" name="controll_subject_type" id="controll_subject_type">
                <input id="clear" type="reset" value="Clear">
