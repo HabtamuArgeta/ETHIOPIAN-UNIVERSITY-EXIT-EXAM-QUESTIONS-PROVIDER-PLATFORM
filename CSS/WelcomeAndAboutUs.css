@@ -78,8 +78,7 @@
              margin-left: 10%;
            }
            .contain{
-            margin-left: 9%;
-            margin-right: 9%;
+            position: relative;
            }
            .col{
             width: 40%;
@@ -87,7 +86,28 @@
            .col1,.col3,.col5{
             float:left;
             clear: left;
+            margin-left: 9%;
            }
            .col2,.col4,.col6{
             float:right;
+            margin-right: 6%;
+           }
+           .col7{
+            width: 100%;
+            height: 200px;
+            border-radius: 15px;
+            background-color: rgb(138, 117, 117);
+            clear: both;
+           }
+           .col7 h1{color: white;text-align: center; margin-top: -5px;}
+           .col7 a{text-decoration: none;color: gold;font-size: larger;}
+           #footerLeft{
+            margin-left: 15%;
+             float: left;
+             width: 40%;
+           }
+           #footerRight{
+            padding-left: 5%;
+            float: right;
+            width: 40%;
            }
