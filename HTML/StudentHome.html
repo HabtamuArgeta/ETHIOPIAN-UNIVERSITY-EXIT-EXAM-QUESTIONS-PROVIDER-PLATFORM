@@ -7,13 +7,13 @@
         <link rel="icon" href="../IMAGES/logo.jpg">
         <link rel="stylesheet" href="../CSS/Home.css">
     </head>
-    <body>
+    <body onload="showWelcome()">
         <header>
             <nav id="header-nav">
                <img  id="logo" src="../IMAGES/logo.jpg"> <span  id="logoName">EUEEP</span>
-               <a  class="HeaderShow" href="welcome.html" onclick="chengeTitl('Home')" target="myfram">Home</a>
+               <a id="home" class="HeaderShow" href="welcome.html" onclick="chengeTitl('Home')" target="myfram">Home</a>
                <a class="HeaderShow" href="takeExam.html" onclick="chengeTitl('Exam')" target="myfram">Exam</a>
-               <a class="HeaderShow" href="welcome.html" onclick="chengeTitl('About us')"target="myfram">About us</a>
+               <a class="HeaderShow" href="AboutUs.html" onclick="chengeTitl('About us')" target="myfram">About us</a>
                <div id="bar" onclick="showBars()"> &#x2261;</div>
             </nav>
           </header>
@@ -21,11 +21,16 @@
                <a id="close" onclick="closeMe()">&#10007;</a>
                <a class="Asideshow" href="welcome.html" onclick="chengeTitl('Home')" target="myfram">Home</a>
                <a class="Asideshow" href="takeExam.html" onclick="chengeTitl('Exam')" target="myfram">Exam</a>
-               <a class="Asideshow" href="welcome.html" onclick="chengeTitl('About us')"target="myfram">About us</a>
-        
+               <a class="Asideshow" href="AboutUs.html" onclick="chengeTitl('About us')"target="myfram">About us</a>
           </aside>
           <iframe id="myfram" name="myfram"></iframe> 
-
+          <script> 
+          //this is used to click an anchor whose id =home when the page loads
+              window.addEventListener("load",function(){
+                let homeLink = document.getElementById('home');
+                homeLink.click();
+              });  
+          </script>
           <script src="../JS/MediaManeger.js"></script>
     </body>
 </html>

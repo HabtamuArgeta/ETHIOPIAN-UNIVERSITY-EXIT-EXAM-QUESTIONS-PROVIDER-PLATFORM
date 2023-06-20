@@ -16,4 +16,15 @@ function chengeTitl(newTitle){
   function showBars(){
    document.getElementById('rightAside').style.display="block";
   } 
+
+  let header=document.getElementsByClassName('HeaderShow');
+  for(let i=0;i<header.length;i++){
+    header[i].addEventListener("click",function(){
+      for(let j=0;j<header.length;j++){
+        header[j].style.textDecoration="none";
+      }
+       this.style.textDecoration = 'underline';
+    });
+  }
+
  
